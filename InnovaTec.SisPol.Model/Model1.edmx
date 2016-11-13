@@ -1,0 +1,780 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TCategoria">
+          <Key>
+            <PropertyRef Name="ncat_codigo" />
+          </Key>
+          <Property Name="ncat_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ccat_descripcion" Type="varchar" MaxLength="20" />
+          <Property Name="ncat_estdato" Type="int" />
+          <Property Name="ncat_estreg" Type="int" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="8" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="8" />
+          <Property Name="daud_feccre" Type="datetime" />
+          <Property Name="daud_fecact" Type="datetime" />
+          <Property Name="ncat_orden" Type="int" />
+        </EntityType>
+        <EntityType Name="TEstado">
+          <Key>
+            <PropertyRef Name="nest_codigo" />
+          </Key>
+          <Property Name="nest_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cest_desc" Type="varchar" MaxLength="50" />
+          <Property Name="nest_estreg" Type="int" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="8" />
+          <Property Name="daud_feccre" Type="datetime" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="8" />
+          <Property Name="daud_fecact" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TMarca">
+          <Key>
+            <PropertyRef Name="nmar_codigo" />
+          </Key>
+          <Property Name="nmar_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cmar_descripcion" Type="varchar" MaxLength="20" />
+          <Property Name="nmar_estdato" Type="int" />
+          <Property Name="nmar_estreg" Type="int" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="8" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="8" />
+          <Property Name="daud_feccre" Type="datetime" />
+          <Property Name="daud_fecact" Type="datetime" />
+          <Property Name="nmar_orden" Type="int" />
+        </EntityType>
+        <EntityType Name="TModelo">
+          <Key>
+            <PropertyRef Name="nmod_codigo" />
+          </Key>
+          <Property Name="nmod_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cmod_descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="nmar_codigo" Type="int" />
+          <Property Name="cmar_descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="nmod_estdato" Type="int" Nullable="false" />
+          <Property Name="nmod_estreg" Type="int" Nullable="false" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="8" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="8" />
+          <Property Name="daud_feccre" Type="datetime" />
+          <Property Name="daud_fecact" Type="datetime" />
+          <Property Name="nmod_orden" Type="int" />
+        </EntityType>
+        <EntityType Name="TMotorizado">
+          <Key>
+            <PropertyRef Name="nmot_codigo" />
+          </Key>
+          <Property Name="nmot_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nper_codigo" Type="int" />
+          <Property Name="nsup_codigo" Type="int" />
+          <Property Name="cmot_dni" Type="varchar" MaxLength="20" />
+          <Property Name="cmot_nombres" Type="varchar" MaxLength="100" />
+          <Property Name="cmot_apepat" Type="varchar" MaxLength="50" />
+          <Property Name="cmot_apemat" Type="varchar" MaxLength="50" />
+          <Property Name="cmot_nombrecompleto" Type="varchar" MaxLength="200" />
+          <Property Name="cmot_celular" Type="varchar" MaxLength="20" />
+          <Property Name="cmot_telefono" Type="varchar" MaxLength="20" />
+          <Property Name="cmot_email" Type="varchar" MaxLength="50" />
+          <Property Name="cmot_sexo" Type="varchar" MaxLength="1" />
+          <Property Name="dmot_fecasigna" Type="datetime" />
+          <Property Name="cmot_placamoto" Type="varchar" MaxLength="20" />
+          <Property Name="nmot_estdato" Type="int" />
+          <Property Name="nmot_estreg" Type="int" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="20" />
+          <Property Name="daud_feccre" Type="datetime" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="20" />
+          <Property Name="daud_fecact" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TParamDetalle">
+          <Key>
+            <PropertyRef Name="npad_codigo" />
+          </Key>
+          <Property Name="npad_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="npar_codigo" Type="int" Nullable="false" />
+          <Property Name="cpad_descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cpad_valor" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="npad_estreg" Type="int" Nullable="false" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="8" />
+          <Property Name="daud_feccre" Type="datetime" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="8" />
+          <Property Name="daud_fecact" Type="datetime" />
+          <Property Name="npad_orden" Type="int" />
+        </EntityType>
+        <EntityType Name="TParametrica">
+          <Key>
+            <PropertyRef Name="npar_codigo" />
+          </Key>
+          <Property Name="npar_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cpar_descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="npar_estreg" Type="int" Nullable="false" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="8" />
+          <Property Name="daud_feccre" Type="datetime" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="8" />
+          <Property Name="daud_fecact" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TPersonal">
+          <Key>
+            <PropertyRef Name="nper_codigo" />
+          </Key>
+          <Property Name="nper_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cper_dni" Type="varchar" MaxLength="8" />
+          <Property Name="cper_nombres" Type="varchar" MaxLength="50" />
+          <Property Name="cper_apepat" Type="varchar" MaxLength="50" />
+          <Property Name="cper_apemat" Type="varchar" MaxLength="50" />
+          <Property Name="cper_nombrecompleto" Type="varchar" MaxLength="150" />
+          <Property Name="cper_celular" Type="varchar" MaxLength="20" />
+          <Property Name="cper_telefono" Type="varchar" MaxLength="20" />
+          <Property Name="cper_email" Type="varchar" MaxLength="50" />
+          <Property Name="cper_sexo" Type="varchar" MaxLength="1" />
+          <Property Name="dper_fecingreso" Type="datetime" />
+          <Property Name="nper_estdato" Type="int" />
+          <Property Name="nper_estreg" Type="int" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="8" />
+          <Property Name="daud_feccre" Type="datetime" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="8" />
+          <Property Name="daud_fecact" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TPolizaFor">
+          <Key>
+            <PropertyRef Name="npol_codigo" />
+          </Key>
+          <Property Name="npol_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cpol_nroform" Type="varchar" MaxLength="20" />
+          <Property Name="cpol_nropoliza" Type="varchar" MaxLength="20" />
+          <Property Name="cpol_placaveh" Type="varchar" MaxLength="20" />
+          <Property Name="npol_aniofabveh" Type="int" />
+          <Property Name="npol_nroasientoveh" Type="int" />
+          <Property Name="nmar_codigo" Type="int" />
+          <Property Name="cmar_descripcion" Type="varchar" MaxLength="20" />
+          <Property Name="nmod_codigo" Type="int" />
+          <Property Name="cmod_descripcion" Type="varchar" MaxLength="20" />
+          <Property Name="ccat_codigo" Type="varchar" MaxLength="3" />
+          <Property Name="ccat_descripcion" Type="varchar" MaxLength="20" />
+          <Property Name="cpol_seriemotor" Type="varchar" MaxLength="20" />
+          <Property Name="cpol_codmon" Type="varchar" MaxLength="3" />
+          <Property Name="cpol_desmoneda" Type="varchar" MaxLength="20" />
+          <Property Name="npol_precioneto" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="npol_porcentajecomision" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="npol_montocomision" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="npol_montoprima" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="nest_codigo" Type="int" Nullable="false" />
+          <Property Name="cest_descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dpol_fecefecto" Type="datetime" />
+          <Property Name="dpol_fectermino" Type="datetime" />
+          <Property Name="dpol_fecingreso" Type="datetime" />
+          <Property Name="npol_nrocarga" Type="int" />
+          <Property Name="npol_estdato" Type="int" />
+          <Property Name="npol_estreg" Type="int" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="20" />
+          <Property Name="daud_feccre" Type="datetime" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="20" />
+          <Property Name="daud_fecact" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TPuntoVenta">
+          <Key>
+            <PropertyRef Name="nptv_codigo" />
+          </Key>
+          <Property Name="nptv_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cptv_RUC" Type="varchar" MaxLength="11" />
+          <Property Name="cptv_nombre" Type="varchar" MaxLength="200" />
+          <Property Name="cubi_codigo" Type="varchar" MaxLength="8" />
+          <Property Name="cptv_direccion" Type="varchar" MaxLength="500" />
+          <Property Name="cptv_referencia" Type="varchar" MaxLength="500" />
+          <Property Name="ccon_telefono" Type="varchar" MaxLength="50" />
+          <Property Name="ncon_codcontacto" Type="int" />
+          <Property Name="ccon_celular" Type="varchar" MaxLength="50" />
+          <Property Name="ccon_nrodni" Type="varchar" MaxLength="8" />
+          <Property Name="ccon_nombres" Type="varchar" MaxLength="50" />
+          <Property Name="ccon_apepat" Type="varchar" MaxLength="50" />
+          <Property Name="ccon_apemat" Type="varchar" MaxLength="50" />
+          <Property Name="ccon_email" Type="varchar" MaxLength="50" />
+          <Property Name="nptv_estdato" Type="int" />
+          <Property Name="nptv_estreg" Type="int" />
+          <Property Name="dptv_fecalta" Type="datetime" />
+          <Property Name="dptv_fecbaja" Type="datetime" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="8" />
+          <Property Name="daud_feccre" Type="datetime" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="8" />
+          <Property Name="daud_fecact" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_TParamDetalle_TParametrica">
+          <End Role="TParametrica" Type="Self.TParametrica" Multiplicity="1" />
+          <End Role="TParamDetalle" Type="Self.TParamDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TParametrica">
+              <PropertyRef Name="npar_codigo" />
+            </Principal>
+            <Dependent Role="TParamDetalle">
+              <PropertyRef Name="npar_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SISPOL_GENERAR_POLIZA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="P_ccat_codigo" Type="varchar" Mode="In" />
+          <Parameter Name="P_ccat_descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="P_nest_codigo" Type="int" Mode="In" />
+          <Parameter Name="P_cest_descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="P_nform_desde" Type="int" Mode="In" />
+          <Parameter Name="P_nform_hasta" Type="int" Mode="In" />
+          <Parameter Name="P_cpol_formato" Type="varchar" Mode="In" />
+          <Parameter Name="P_npol_desde" Type="int" Mode="In" />
+          <Parameter Name="P_npol_hasta" Type="int" Mode="In" />
+          <Parameter Name="P_d_fecingreso" Type="datetime" Mode="In" />
+          <Parameter Name="P_n_cantidadPolizas" Type="int" Mode="In" />
+          <Parameter Name="P_n_diasVigencia" Type="int" Mode="In" />
+          <Parameter Name="P_usuariocrea" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SISPOL_GUARDAR_MOTORIZADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_dni" Type="varchar" Mode="In" />
+          <Parameter Name="p_nombres" Type="varchar" Mode="In" />
+          <Parameter Name="p_apepat" Type="varchar" Mode="In" />
+          <Parameter Name="p_apemat" Type="varchar" Mode="In" />
+          <Parameter Name="p_celular" Type="varchar" Mode="In" />
+          <Parameter Name="p_telefono" Type="varchar" Mode="In" />
+          <Parameter Name="p_email" Type="varchar" Mode="In" />
+          <Parameter Name="p_sexo" Type="varchar" Mode="In" />
+          <Parameter Name="p_fecasigna" Type="datetime" Mode="In" />
+          <Parameter Name="p_placamoto" Type="varchar" Mode="In" />
+          <Parameter Name="p_usuario" Type="varchar" Mode="In" />
+          <Parameter Name="nmot_codigo" Type="int" Mode="InOut" />
+          <Parameter Name="nper_codigo" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SISPOL_GUARDAR_SUPERVISOR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_dni" Type="varchar" Mode="In" />
+          <Parameter Name="p_nombres" Type="varchar" Mode="In" />
+          <Parameter Name="p_apepat" Type="varchar" Mode="In" />
+          <Parameter Name="p_apemat" Type="varchar" Mode="In" />
+          <Parameter Name="p_celular" Type="varchar" Mode="In" />
+          <Parameter Name="p_telefono" Type="varchar" Mode="In" />
+          <Parameter Name="p_email" Type="varchar" Mode="In" />
+          <Parameter Name="p_sexo" Type="varchar" Mode="In" />
+          <Parameter Name="p_usuario" Type="varchar" Mode="In" />
+          <Parameter Name="nsup_codigo" Type="int" Mode="InOut" />
+          <Parameter Name="nper_codigo" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="Model1StoreContainer">
+          <EntitySet Name="TCategoria" EntityType="Self.TCategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TEstado" EntityType="Self.TEstado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TMarca" EntityType="Self.TMarca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TModelo" EntityType="Self.TModelo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TMotorizado" EntityType="Self.TMotorizado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TParamDetalle" EntityType="Self.TParamDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TParametrica" EntityType="Self.TParametrica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPersonal" EntityType="Self.TPersonal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPolizaFor" EntityType="Self.TPolizaFor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TPuntoVenta" EntityType="Self.TPuntoVenta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TParamDetalle_TParametrica" Association="Self.FK_TParamDetalle_TParametrica">
+            <End Role="TParametrica" EntitySet="TParametrica" />
+            <End Role="TParamDetalle" EntitySet="TParamDetalle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TParametrica" EntityType="Model1.TParametrica" />
+          <EntitySet Name="TParamDetalle" EntityType="Model1.TParamDetalle" />
+          <AssociationSet Name="FK_TParamDetalle_TParametrica" Association="Model1.FK_TParamDetalle_TParametrica">
+            <End Role="TParametrica" EntitySet="TParametrica" />
+            <End Role="TParamDetalle" EntitySet="TParamDetalle" />
+          </AssociationSet>
+          <EntitySet Name="TPuntoVenta" EntityType="Model1.TPuntoVenta" />
+          <EntitySet Name="TCategoria" EntityType="Model1.TCategoria" />
+          <EntitySet Name="TMarca" EntityType="Model1.TMarca" />
+          <EntitySet Name="TModelo" EntityType="Model1.TModelo" />
+          <EntitySet Name="TEstado" EntityType="Model1.TEstado" />
+          <EntitySet Name="TPolizaFor" EntityType="Model1.TPolizaFor" />
+          <FunctionImport Name="SISPOL_GENERAR_POLIZA">
+            <Parameter Name="P_ccat_codigo" Mode="In" Type="String" />
+            <Parameter Name="P_ccat_descripcion" Mode="In" Type="String" />
+            <Parameter Name="P_nest_codigo" Mode="In" Type="Int32" />
+            <Parameter Name="P_cest_descripcion" Mode="In" Type="String" />
+            <Parameter Name="P_nform_desde" Mode="In" Type="Int32" />
+            <Parameter Name="P_nform_hasta" Mode="In" Type="Int32" />
+            <Parameter Name="P_cpol_formato" Mode="In" Type="String" />
+            <Parameter Name="P_npol_desde" Mode="In" Type="Int32" />
+            <Parameter Name="P_npol_hasta" Mode="In" Type="Int32" />
+            <Parameter Name="P_d_fecingreso" Mode="In" Type="DateTime" />
+            <Parameter Name="P_n_cantidadPolizas" Mode="In" Type="Int32" />
+            <Parameter Name="P_n_diasVigencia" Mode="In" Type="Int32" />
+            <Parameter Name="P_usuariocrea" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="TMotorizado" EntityType="Model1.TMotorizado" />
+          <EntitySet Name="TPersonal" EntityType="Model1.TPersonal" />
+          <FunctionImport Name="SISPOL_GUARDAR_MOTORIZADO">
+            <Parameter Name="p_dni" Mode="In" Type="String" />
+            <Parameter Name="p_nombres" Mode="In" Type="String" />
+            <Parameter Name="p_apepat" Mode="In" Type="String" />
+            <Parameter Name="p_apemat" Mode="In" Type="String" />
+            <Parameter Name="p_celular" Mode="In" Type="String" />
+            <Parameter Name="p_telefono" Mode="In" Type="String" />
+            <Parameter Name="p_email" Mode="In" Type="String" />
+            <Parameter Name="p_sexo" Mode="In" Type="String" />
+            <Parameter Name="p_fecasigna" Mode="In" Type="DateTime" />
+            <Parameter Name="p_placamoto" Mode="In" Type="String" />
+            <Parameter Name="p_usuario" Mode="In" Type="String" />
+            <Parameter Name="nmot_codigo" Mode="InOut" Type="Int32" />
+            <Parameter Name="nper_codigo" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SISPOL_GUARDAR_SUPERVISOR">
+            <Parameter Name="p_dni" Mode="In" Type="String" />
+            <Parameter Name="p_nombres" Mode="In" Type="String" />
+            <Parameter Name="p_apepat" Mode="In" Type="String" />
+            <Parameter Name="p_apemat" Mode="In" Type="String" />
+            <Parameter Name="p_celular" Mode="In" Type="String" />
+            <Parameter Name="p_telefono" Mode="In" Type="String" />
+            <Parameter Name="p_email" Mode="In" Type="String" />
+            <Parameter Name="p_sexo" Mode="In" Type="String" />
+            <Parameter Name="p_usuario" Mode="In" Type="String" />
+            <Parameter Name="nsup_codigo" Mode="InOut" Type="Int32" />
+            <Parameter Name="nper_codigo" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="TParametrica">
+          <Key>
+            <PropertyRef Name="npar_codigo" />
+          </Key>
+          <Property Name="npar_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cpar_descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="npar_estreg" Type="Int32" Nullable="false" />
+          <Property Name="caud_usrcre" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Precision="3" />
+          <Property Name="caud_usract" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TParamDetalle" Relationship="Model1.FK_TParamDetalle_TParametrica" FromRole="TParametrica" ToRole="TParamDetalle" />
+        </EntityType>
+        <EntityType Name="TParamDetalle">
+          <Key>
+            <PropertyRef Name="npad_codigo" />
+          </Key>
+          <Property Name="npad_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="npar_codigo" Type="Int32" Nullable="false" />
+          <Property Name="cpad_descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cpad_valor" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="npad_estreg" Type="Int32" Nullable="false" />
+          <Property Name="caud_usrcre" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Precision="3" />
+          <Property Name="caud_usract" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+          <Property Name="npad_orden" Type="Int32" />
+          <NavigationProperty Name="TParametrica" Relationship="Model1.FK_TParamDetalle_TParametrica" FromRole="TParamDetalle" ToRole="TParametrica" />
+        </EntityType>
+        <Association Name="FK_TParamDetalle_TParametrica">
+          <End Type="Model1.TParametrica" Role="TParametrica" Multiplicity="1" />
+          <End Type="Model1.TParamDetalle" Role="TParamDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TParametrica">
+              <PropertyRef Name="npar_codigo" />
+            </Principal>
+            <Dependent Role="TParamDetalle">
+              <PropertyRef Name="npar_codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TPuntoVenta">
+          <Key>
+            <PropertyRef Name="nptv_codigo" />
+          </Key>
+          <Property Name="nptv_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="caud_usrcre" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Precision="3" />
+          <Property Name="caud_usract" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+          <Property Name="nptv_estreg" Type="Int32" />
+          <Property Name="cubi_codigo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cptv_direccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="cptv_referencia" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ccon_telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ncon_codcontacto" Type="Int32" />
+          <Property Name="ccon_celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ccon_nrodni" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ccon_nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ccon_apepat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ccon_apemat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ccon_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cptv_RUC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="dptv_fecalta" Type="DateTime" Precision="3" />
+          <Property Name="dptv_fecbaja" Type="DateTime" Precision="3" />
+          <Property Name="cptv_nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="nptv_estdato" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TCategoria">
+          <Key>
+            <PropertyRef Name="ncat_codigo" />
+          </Key>
+          <Property Name="ncat_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ccat_descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ncat_estdato" Type="Int32" />
+          <Property Name="ncat_estreg" Type="Int32" />
+          <Property Name="caud_usrcre" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="caud_usract" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Precision="3" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+          <Property Name="ncat_orden" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TMarca">
+          <Key>
+            <PropertyRef Name="nmar_codigo" />
+          </Key>
+          <Property Name="nmar_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cmar_descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nmar_estdato" Type="Int32" />
+          <Property Name="nmar_estreg" Type="Int32" />
+          <Property Name="caud_usrcre" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="caud_usract" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Precision="3" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+          <Property Name="nmar_orden" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TModelo">
+          <Key>
+            <PropertyRef Name="nmod_codigo" />
+          </Key>
+          <Property Name="nmod_codigo" Type="Int32" Nullable="false" />
+          <Property Name="cmod_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nmar_codigo" Type="Int32" />
+          <Property Name="cmar_descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nmod_estdato" Type="Int32" Nullable="false" />
+          <Property Name="nmod_estreg" Type="Int32" Nullable="false" />
+          <Property Name="caud_usrcre" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="caud_usract" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Precision="3" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+          <Property Name="nmod_orden" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TEstado">
+          <Key>
+            <PropertyRef Name="nest_codigo" />
+          </Key>
+          <Property Name="nest_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cest_desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nest_estreg" Type="Int32" />
+          <Property Name="caud_usrcre" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Precision="3" />
+          <Property Name="caud_usract" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TPolizaFor">
+          <Key>
+            <PropertyRef Name="npol_codigo" />
+          </Key>
+          <Property Name="npol_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cpol_nroform" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cpol_nropoliza" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cpol_placaveh" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="npol_aniofabveh" Type="Int32" />
+          <Property Name="npol_nroasientoveh" Type="Int32" />
+          <Property Name="nmar_codigo" Type="Int32" />
+          <Property Name="cmar_descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nmod_codigo" Type="Int32" />
+          <Property Name="cmod_descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ccat_codigo" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ccat_descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cpol_seriemotor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cpol_codmon" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="cpol_desmoneda" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="npol_precioneto" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="npol_porcentajecomision" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="npol_montocomision" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="npol_montoprima" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="nest_codigo" Type="Int32" Nullable="false" />
+          <Property Name="cest_descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dpol_fecefecto" Type="DateTime" Precision="3" />
+          <Property Name="dpol_fectermino" Type="DateTime" Precision="3" />
+          <Property Name="dpol_fecingreso" Type="DateTime" Precision="3" />
+          <Property Name="npol_nrocarga" Type="Int32" />
+          <Property Name="npol_estdato" Type="Int32" />
+          <Property Name="npol_estreg" Type="Int32" />
+          <Property Name="caud_usrcre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Precision="3" />
+          <Property Name="caud_usract" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TMotorizado">
+          <Key>
+            <PropertyRef Name="nmot_codigo" />
+          </Key>
+          <Property Name="nmot_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nper_codigo" Type="Int32" />
+          <Property Name="nsup_codigo" Type="Int32" />
+          <Property Name="cmot_dni" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cmot_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cmot_apepat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cmot_apemat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cmot_nombrecompleto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="cmot_celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cmot_telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cmot_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cmot_sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="dmot_fecasigna" Type="DateTime" Precision="3" />
+          <Property Name="cmot_placamoto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nmot_estdato" Type="Int32" />
+          <Property Name="nmot_estreg" Type="Int32" />
+          <Property Name="caud_usrcre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Precision="3" />
+          <Property Name="caud_usract" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TPersonal">
+          <Key>
+            <PropertyRef Name="nper_codigo" />
+          </Key>
+          <Property Name="nper_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cper_dni" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="cper_nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cper_apepat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cper_apemat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cper_nombrecompleto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="cper_celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cper_telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cper_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cper_sexo" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="dper_fecingreso" Type="DateTime" Precision="3" />
+          <Property Name="nper_estdato" Type="Int32" />
+          <Property Name="nper_estreg" Type="Int32" />
+          <Property Name="caud_usrcre" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Precision="3" />
+          <Property Name="caud_usract" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1StoreContainer">
+          <EntitySetMapping Name="TParametrica">
+            <EntityTypeMapping TypeName="Model1.TParametrica">
+              <MappingFragment StoreEntitySet="TParametrica">
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="npar_estreg" ColumnName="npar_estreg" />
+                <ScalarProperty Name="cpar_descripcion" ColumnName="cpar_descripcion" />
+                <ScalarProperty Name="npar_codigo" ColumnName="npar_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TParamDetalle">
+            <EntityTypeMapping TypeName="Model1.TParamDetalle">
+              <MappingFragment StoreEntitySet="TParamDetalle">
+                <ScalarProperty Name="npad_orden" ColumnName="npad_orden" />
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="npad_estreg" ColumnName="npad_estreg" />
+                <ScalarProperty Name="cpad_valor" ColumnName="cpad_valor" />
+                <ScalarProperty Name="cpad_descripcion" ColumnName="cpad_descripcion" />
+                <ScalarProperty Name="npar_codigo" ColumnName="npar_codigo" />
+                <ScalarProperty Name="npad_codigo" ColumnName="npad_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPuntoVenta">
+            <EntityTypeMapping TypeName="Model1.TPuntoVenta">
+              <MappingFragment StoreEntitySet="TPuntoVenta">
+                <ScalarProperty Name="nptv_estdato" ColumnName="nptv_estdato" />
+                <ScalarProperty Name="cptv_nombre" ColumnName="cptv_nombre" />
+                <ScalarProperty Name="dptv_fecbaja" ColumnName="dptv_fecbaja" />
+                <ScalarProperty Name="dptv_fecalta" ColumnName="dptv_fecalta" />
+                <ScalarProperty Name="cptv_RUC" ColumnName="cptv_RUC" />
+                <ScalarProperty Name="ccon_email" ColumnName="ccon_email" />
+                <ScalarProperty Name="ccon_apemat" ColumnName="ccon_apemat" />
+                <ScalarProperty Name="ccon_apepat" ColumnName="ccon_apepat" />
+                <ScalarProperty Name="ccon_nombres" ColumnName="ccon_nombres" />
+                <ScalarProperty Name="ccon_nrodni" ColumnName="ccon_nrodni" />
+                <ScalarProperty Name="ccon_celular" ColumnName="ccon_celular" />
+                <ScalarProperty Name="ncon_codcontacto" ColumnName="ncon_codcontacto" />
+                <ScalarProperty Name="ccon_telefono" ColumnName="ccon_telefono" />
+                <ScalarProperty Name="cptv_referencia" ColumnName="cptv_referencia" />
+                <ScalarProperty Name="cptv_direccion" ColumnName="cptv_direccion" />
+                <ScalarProperty Name="cubi_codigo" ColumnName="cubi_codigo" />
+                <ScalarProperty Name="nptv_estreg" ColumnName="nptv_estreg" />
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="nptv_codigo" ColumnName="nptv_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TCategoria">
+            <EntityTypeMapping TypeName="Model1.TCategoria">
+              <MappingFragment StoreEntitySet="TCategoria">
+                <ScalarProperty Name="ncat_orden" ColumnName="ncat_orden" />
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="ncat_estreg" ColumnName="ncat_estreg" />
+                <ScalarProperty Name="ncat_estdato" ColumnName="ncat_estdato" />
+                <ScalarProperty Name="ccat_descripcion" ColumnName="ccat_descripcion" />
+                <ScalarProperty Name="ncat_codigo" ColumnName="ncat_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TMarca">
+            <EntityTypeMapping TypeName="Model1.TMarca">
+              <MappingFragment StoreEntitySet="TMarca">
+                <ScalarProperty Name="nmar_orden" ColumnName="nmar_orden" />
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="nmar_estreg" ColumnName="nmar_estreg" />
+                <ScalarProperty Name="nmar_estdato" ColumnName="nmar_estdato" />
+                <ScalarProperty Name="cmar_descripcion" ColumnName="cmar_descripcion" />
+                <ScalarProperty Name="nmar_codigo" ColumnName="nmar_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TModelo">
+            <EntityTypeMapping TypeName="Model1.TModelo">
+              <MappingFragment StoreEntitySet="TModelo">
+                <ScalarProperty Name="nmod_orden" ColumnName="nmod_orden" />
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="nmod_estreg" ColumnName="nmod_estreg" />
+                <ScalarProperty Name="nmod_estdato" ColumnName="nmod_estdato" />
+                <ScalarProperty Name="cmar_descripcion" ColumnName="cmar_descripcion" />
+                <ScalarProperty Name="nmar_codigo" ColumnName="nmar_codigo" />
+                <ScalarProperty Name="cmod_descripcion" ColumnName="cmod_descripcion" />
+                <ScalarProperty Name="nmod_codigo" ColumnName="nmod_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TEstado">
+            <EntityTypeMapping TypeName="Model1.TEstado">
+              <MappingFragment StoreEntitySet="TEstado">
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="nest_estreg" ColumnName="nest_estreg" />
+                <ScalarProperty Name="cest_desc" ColumnName="cest_desc" />
+                <ScalarProperty Name="nest_codigo" ColumnName="nest_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPolizaFor">
+            <EntityTypeMapping TypeName="Model1.TPolizaFor">
+              <MappingFragment StoreEntitySet="TPolizaFor">
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="npol_estreg" ColumnName="npol_estreg" />
+                <ScalarProperty Name="npol_estdato" ColumnName="npol_estdato" />
+                <ScalarProperty Name="npol_nrocarga" ColumnName="npol_nrocarga" />
+                <ScalarProperty Name="dpol_fecingreso" ColumnName="dpol_fecingreso" />
+                <ScalarProperty Name="dpol_fectermino" ColumnName="dpol_fectermino" />
+                <ScalarProperty Name="dpol_fecefecto" ColumnName="dpol_fecefecto" />
+                <ScalarProperty Name="cest_descripcion" ColumnName="cest_descripcion" />
+                <ScalarProperty Name="nest_codigo" ColumnName="nest_codigo" />
+                <ScalarProperty Name="npol_montoprima" ColumnName="npol_montoprima" />
+                <ScalarProperty Name="npol_montocomision" ColumnName="npol_montocomision" />
+                <ScalarProperty Name="npol_porcentajecomision" ColumnName="npol_porcentajecomision" />
+                <ScalarProperty Name="npol_precioneto" ColumnName="npol_precioneto" />
+                <ScalarProperty Name="cpol_desmoneda" ColumnName="cpol_desmoneda" />
+                <ScalarProperty Name="cpol_codmon" ColumnName="cpol_codmon" />
+                <ScalarProperty Name="cpol_seriemotor" ColumnName="cpol_seriemotor" />
+                <ScalarProperty Name="ccat_descripcion" ColumnName="ccat_descripcion" />
+                <ScalarProperty Name="ccat_codigo" ColumnName="ccat_codigo" />
+                <ScalarProperty Name="cmod_descripcion" ColumnName="cmod_descripcion" />
+                <ScalarProperty Name="nmod_codigo" ColumnName="nmod_codigo" />
+                <ScalarProperty Name="cmar_descripcion" ColumnName="cmar_descripcion" />
+                <ScalarProperty Name="nmar_codigo" ColumnName="nmar_codigo" />
+                <ScalarProperty Name="npol_nroasientoveh" ColumnName="npol_nroasientoveh" />
+                <ScalarProperty Name="npol_aniofabveh" ColumnName="npol_aniofabveh" />
+                <ScalarProperty Name="cpol_placaveh" ColumnName="cpol_placaveh" />
+                <ScalarProperty Name="cpol_nropoliza" ColumnName="cpol_nropoliza" />
+                <ScalarProperty Name="cpol_nroform" ColumnName="cpol_nroform" />
+                <ScalarProperty Name="npol_codigo" ColumnName="npol_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SISPOL_GENERAR_POLIZA" FunctionName="Model1.Store.SISPOL_GENERAR_POLIZA" />
+          <EntitySetMapping Name="TMotorizado">
+            <EntityTypeMapping TypeName="Model1.TMotorizado">
+              <MappingFragment StoreEntitySet="TMotorizado">
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="nmot_estreg" ColumnName="nmot_estreg" />
+                <ScalarProperty Name="nmot_estdato" ColumnName="nmot_estdato" />
+                <ScalarProperty Name="cmot_placamoto" ColumnName="cmot_placamoto" />
+                <ScalarProperty Name="dmot_fecasigna" ColumnName="dmot_fecasigna" />
+                <ScalarProperty Name="cmot_sexo" ColumnName="cmot_sexo" />
+                <ScalarProperty Name="cmot_email" ColumnName="cmot_email" />
+                <ScalarProperty Name="cmot_telefono" ColumnName="cmot_telefono" />
+                <ScalarProperty Name="cmot_celular" ColumnName="cmot_celular" />
+                <ScalarProperty Name="cmot_nombrecompleto" ColumnName="cmot_nombrecompleto" />
+                <ScalarProperty Name="cmot_apemat" ColumnName="cmot_apemat" />
+                <ScalarProperty Name="cmot_apepat" ColumnName="cmot_apepat" />
+                <ScalarProperty Name="cmot_nombres" ColumnName="cmot_nombres" />
+                <ScalarProperty Name="cmot_dni" ColumnName="cmot_dni" />
+                <ScalarProperty Name="nsup_codigo" ColumnName="nsup_codigo" />
+                <ScalarProperty Name="nper_codigo" ColumnName="nper_codigo" />
+                <ScalarProperty Name="nmot_codigo" ColumnName="nmot_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPersonal">
+            <EntityTypeMapping TypeName="Model1.TPersonal">
+              <MappingFragment StoreEntitySet="TPersonal">
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="nper_estreg" ColumnName="nper_estreg" />
+                <ScalarProperty Name="nper_estdato" ColumnName="nper_estdato" />
+                <ScalarProperty Name="dper_fecingreso" ColumnName="dper_fecingreso" />
+                <ScalarProperty Name="cper_sexo" ColumnName="cper_sexo" />
+                <ScalarProperty Name="cper_email" ColumnName="cper_email" />
+                <ScalarProperty Name="cper_telefono" ColumnName="cper_telefono" />
+                <ScalarProperty Name="cper_celular" ColumnName="cper_celular" />
+                <ScalarProperty Name="cper_nombrecompleto" ColumnName="cper_nombrecompleto" />
+                <ScalarProperty Name="cper_apemat" ColumnName="cper_apemat" />
+                <ScalarProperty Name="cper_apepat" ColumnName="cper_apepat" />
+                <ScalarProperty Name="cper_nombres" ColumnName="cper_nombres" />
+                <ScalarProperty Name="cper_dni" ColumnName="cper_dni" />
+                <ScalarProperty Name="nper_codigo" ColumnName="nper_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SISPOL_GUARDAR_MOTORIZADO" FunctionName="Model1.Store.SISPOL_GUARDAR_MOTORIZADO" />
+          <FunctionImportMapping FunctionImportName="SISPOL_GUARDAR_SUPERVISOR" FunctionName="Model1.Store.SISPOL_GUARDAR_SUPERVISOR" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,161 @@
+﻿@model InnovaTec.SisPol.Web1.Areas.Poliza.Models.IngresarPolizasViewModels
+@{
+    ViewBag.Title = "IngresarPolizas";
+}
+<h2>Ingresar Polizas</h2>
+@using (Html.BeginForm("", "", new { Area = "Poliza", ReturnUrl = ViewBag.ReturnUrl },
+               FormMethod.Post, new { id = "frmIngresarPolizas", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.ccat_descripcion, new { @class = "form-control" })
+    <hr />
+    <div class="alert alert-warning">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">Marca</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ncat_codigo)
+                        @Html.DropDownListFor(m => m.ncat_codigo, Model.Categoria, "Seleccione", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ncat_codigo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.n_desde)
+                        @Html.TextBoxFor(m => m.n_desde, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.n_desde, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.n_hasta)
+                        @Html.TextBoxFor(m => m.n_hasta, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.n_hasta, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cpol_formato1)
+                        @Html.TextBoxFor(m => m.cpol_formato1, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cpol_formato1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cpol_formato2)
+                        @Html.TextBoxFor(m => m.cpol_formato2, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cpol_formato2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.npol_desde)
+                        @Html.TextBoxFor(m => m.npol_desde, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.npol_desde, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.npol_hasta)
+                        @Html.TextBoxFor(m => m.npol_hasta, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.npol_hasta, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.d_fecingreso)
+                        <div id="dper_fecingreso" class="input-group date">
+                            @Html.TextBoxFor(m => m.d_fecingreso, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                            <span class="input-group-addon"><i class="fa fa-calendar bigger-110"></i></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.d_fecingreso, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.n_cantidadPolizas)
+                        @Html.TextBoxFor(m => m.n_cantidadPolizas, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.n_cantidadPolizas, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.n_diasVigencia)
+                        @Html.TextBoxFor(m => m.n_diasVigencia, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.n_diasVigencia, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" id="btnRetornar" class="btn btn-default" onclick="Retornar();"><i class="fa fa-reply"></i> Retornar</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" id="btnGenerar" class="btn btn-primary" onclick="Generar();"><i class="fa fa-clone"></i> Generar Polizas</button>
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </div>
+}
+@section scripts {
+    <script>
+        $(function () {
+            Globalize.culture('es-PE');
+            $("#d_fecingreso").datepicker();
+        });
+
+        function Generar() {
+            //alert("Generar polizas");
+            //debugger;
+            if ($("#frmIngresarPolizas").valid()) {
+                $.ajax({
+                    url: '@Url.Action("GenerarPoliza", "IngresarPolizas")',
+                    type: 'POST',
+                    data: $("#frmIngresarPolizas").serialize(),
+                    success: function (result) {
+                        data = result;
+                        if (data.Data == "1") {
+                            var url = '@Url.Action("IngresarPolizas2", "IngresarPolizas")' + "?flag=1";
+                            document.location.href = url;
+                        } else {
+                            new PNotify({
+                                title: data.Title,
+                                text: data.Message,
+                                type: data.TypeMessage
+                            });
+                        }
+                    }
+                });
+            }
+        };
+
+        function Retornar() {
+            var url = '@Url.Action("Index", "IngresarPolizas", new { area = "Poliza" })';
+            document.location.href = url;
+        };
+
+        $("#ncat_codigo").change(function () {
+            //debugger;
+            var codigo = $("#ncat_codigo").val();
+            var descripcion = $("#ncat_codigo option:selected").html();
+            if (codigo != "")
+                $("#ccat_descripcion").val(descripcion);
+            else
+                $("#ccat_descripcion").val("");
+        });
+
+    </script>
+}

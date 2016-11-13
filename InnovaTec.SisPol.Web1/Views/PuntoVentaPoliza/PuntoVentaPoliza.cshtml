@@ -1,0 +1,79 @@
+﻿@model InnovaTec.SisPol.Web1.Models.PuntoVentaPolizaViewModels
+@{
+    ViewBag.Title = "Punto de Venta - Poliza";
+}
+<h2>Punto de Venta - Poliza</h2>
+@using (Html.BeginForm("frmPuntoDeVentaPoliza", "PuntoVentaPoliza", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="panel panel-info">
+        <div class="panel-heading">Polizas</div>
+        <div class="panel-body">
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.NPTV_CODIGO, new { @class = "col-md-3 control-label" })
+                <div class="col-md-3">
+                    @Html.DropDownListFor(m => m.SelectedPuntoVenta, Model.PuntoVenta, new { @class = "form-control" })
+                </div>
+                @Html.LabelFor(m => m.NEST_CODIGO, new { @class = "col-md-3 control-label" })
+                <div class="col-md-3">
+                    @Html.DropDownListFor(m => m.SelectedEstadoPol, Model.EstadoPol, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-info">Ud. tiene <strong>100</strong> polizas por liquidar</div>
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="table-responsive">
+                    <table id="tablaPolizas" class="table table-condensed table-striped table-hover"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-group btn-group-justified">
+        <a class="btn btn-default btn-primary" role="button">Liquidar</a>
+        <a class="btn btn-default btn-primary" role="button">Liberar</a>
+        <a class="btn btn-default btn-primary" role="button">Comentario</a>
+    </div>
+}
+@*Load DataTables css*@
+@*<link href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" />*@
+@*Load DataTables js*@
+@section Scripts{
+    @*<script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>*@
+    <script>
+        var url = '@Url.Action("MostrarPolizas", "PuntoVentaPoliza", new { area = "" })';
+        $(document).ready(function () {
+            //alert(url);
+            $('#tablaPolizas').dataTable({
+                "ajax": {
+                    "url": url,
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "aoColumns": [
+                     { "sName": "colu01", "sTitle": "Nro. de Poliza" },
+                     { "sName": "colu02", "sTitle": "Nro. Formulzario" },
+                     { "sName": "colu04", "sTitle": "Fec. Ent." },
+                     {
+                         "sName": "colu05",
+                         "sTitle": "Seleccionar",
+                         "render": function (data, type, row) {
+                             //var chk = "";
+                             //alert(row[3]);
+                             if (row[3] == "1") {
+                                 return "<input type=\"checkbox\" value=\"1\"/>";
+                             }
+                             return "<input type=\"checkbox\" value=\"0\"/>";
+
+                         }
+                     }
+                ]
+            });
+        });
+    </script>
+}

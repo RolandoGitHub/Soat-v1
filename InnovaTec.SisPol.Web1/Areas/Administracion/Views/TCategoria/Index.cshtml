@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Mantenimiento Categoría";
+}
+<h2>Mantenimiento Categoría</h2>
+@using (Html.BeginForm("", "", new { Area = "Administracion", ReturnUrl = ViewBag.ReturnUrl },
+                                                           FormMethod.Post, new { id = "frmCategoria", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-10">
+                &nbsp;
+            </div>
+            <div class="col-md-12">
+                <button type="button" id="btnNuevo" class="btn btn-default" onclick="Nuevo();"><i class="fa fa-clone"></i> Nuevo</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            &nbsp;
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="table-responsive">
+                    <table id="tablaCategoria" class="table table-condensed table-striped table-hover"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts {
+    <script>
+        var url = '@Url.Action("MostrarCategorias", "TCategoria", new { area = "Administracion" })';
+        $(document).ready(function () {            
+            $('#tablaCategoria').dataTable({
+                "ajax": {
+                    "url": url,
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "aoColumns": [
+                      {
+                         "sName": "colu01",
+                         "sWidth": "5%",
+                         "sClass": "center",
+                         "bSearchable": false,
+                         "bSortable": false,
+                         "render": function (data, type, row) {
+                                   return "<div class=\"action-buttons\"><a href=\"javascript:;\" onclick=\"Editar('" + row[0] + "');\"><i class=\"fa fa-pencil green bigger-130\"></i></a></div>";
+                          }
+                      },
+                      { "sName": "colu02", "sTitle": "Categoría" },
+                      {
+                        "sName": "colu03",
+                        "sWidth": "5%",
+                        "sClass": "center",
+                        "bSearchable": false,
+                        "bSortable": false,
+                        "render": function (data, type, row) {
+                                  return "<div class=\"action-buttons\"><a href=\"javascript:;\" onclick=\"Eliminar('" + row[0] + "');\"><i class=\"fa fa-trash green bigger-130\"></i></a></div>";
+                          }
+                      }
+                ]
+            });
+        });
+
+        function Editar(codigo) {
+            var url = '@Url.Action("TCategoria", "TCategoria", new { area = "Administracion" })';
+            document.location.href = url + "?codigo=" + codigo;
+        };
+
+        function Nuevo() {
+            var url = '@Url.Action("TCategoria", "TCategoria", new { area = "Administracion" })';
+            document.location.href = url + "?codigo=0";
+        };
+
+        function Eliminar(codigo) {
+            bootbox.confirm("¿Deseas eliminar el registro?", function (result) {
+                if (result == true) {
+                    var url = '@Url.Action("DarDeBaja", "TCategoria", new { area = "Administracion" })';
+                    document.location.href = url + "?codigo=" + codigo;
+                }
+                //Example.show("Confirm result: " + result);
+            });
+        };
+    </script>
+}
+
+
+
+

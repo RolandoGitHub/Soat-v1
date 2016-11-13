@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="85725d8c2a574466937cd1350954e576" Name="Diagram1" ZoomLevel="86" >
+        <EntityTypeShape EntityType="Model1.TParametrica" Width="1.5" PointX="4.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.TParamDetalle" Width="1.5" PointX="6.5" PointY="0.5" />
+        <AssociationConnector Association="Model1.FK_TParamDetalle_TParametrica" />
+        <EntityTypeShape EntityType="Model1.TPuntoVenta" Width="1.5" PointX="8.25" PointY="3.375" />
+        <EntityTypeShape EntityType="Model1.TCategoria" Width="1.5" PointX="8.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.TMarca" Width="1.5" PointX="4.5" PointY="3.125" />
+        <EntityTypeShape EntityType="Model1.TModelo" Width="1.5" PointX="6.5" PointY="3.875" />
+        <EntityTypeShape EntityType="Model1.TEstado" Width="1.5" PointX="0.5" PointY="5.125" />
+        <EntityTypeShape EntityType="Model1.TPolizaFor" Width="1.5" PointX="2.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.TMotorizado" Width="1.5" PointX="10.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.TPersonal" Width="1.5" PointX="0.5" PointY="0.5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

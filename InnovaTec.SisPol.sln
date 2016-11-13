@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Presentation", "3.Presentation", "{DBA47925-B1C4-46CA-BAD1-B2A065C32268}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Model", "1.Model", "{62C6A953-A904-4049-849E-DDBDE644C010}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnovaTec.SisPol.Model", "InnovaTec.SisPol.Model\InnovaTec.SisPol.Model.csproj", "{8D3A378C-4FA2-419F-A4CA-240E3D3C17FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Infraestructure", "2.Infraestructure", "{A8D513B3-C4F5-4A85-B749-2153EF32F908}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnovaTec.SisPol.Infraestructure", "InnovaTec.SisPol.Infraestructure\InnovaTec.SisPol.Infraestructure.csproj", "{A6E37123-234C-485E-A4BC-DF5F1DF9383E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnovaTec.SisPol.Web1", "InnovaTec.SisPol.Web1\InnovaTec.SisPol.Web1.csproj", "{3C9968E4-6F37-47F7-B4A0-933EE17FA814}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D3A378C-4FA2-419F-A4CA-240E3D3C17FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D3A378C-4FA2-419F-A4CA-240E3D3C17FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D3A378C-4FA2-419F-A4CA-240E3D3C17FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D3A378C-4FA2-419F-A4CA-240E3D3C17FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6E37123-234C-485E-A4BC-DF5F1DF9383E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E37123-234C-485E-A4BC-DF5F1DF9383E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E37123-234C-485E-A4BC-DF5F1DF9383E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E37123-234C-485E-A4BC-DF5F1DF9383E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C9968E4-6F37-47F7-B4A0-933EE17FA814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C9968E4-6F37-47F7-B4A0-933EE17FA814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C9968E4-6F37-47F7-B4A0-933EE17FA814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C9968E4-6F37-47F7-B4A0-933EE17FA814}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8D3A378C-4FA2-419F-A4CA-240E3D3C17FD} = {62C6A953-A904-4049-849E-DDBDE644C010}
+		{A6E37123-234C-485E-A4BC-DF5F1DF9383E} = {A8D513B3-C4F5-4A85-B749-2153EF32F908}
+		{3C9968E4-6F37-47F7-B4A0-933EE17FA814} = {DBA47925-B1C4-46CA-BAD1-B2A065C32268}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,80 @@
+﻿@model InnovaTec.SisPol.Web1.Areas.Administracion.Models.TMarcaViewModels
+@{
+    ViewBag.Title = "- Marca";
+}
+<h2>Marca</h2>
+@using (Html.BeginForm("", "", new { Area = "Administracion" },
+                                               FormMethod.Post, new { id = "frmTMarca", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.nmar_codigo, new { @class = "form-control" })
+    <hr />
+    <div class="alert alert-warning">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">Marca</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cmar_descripcion)
+                        @Html.TextBoxFor(m => m.cmar_descripcion, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cmar_descripcion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.nmar_estdato)
+                        @Html.DropDownListFor(m => m.nmar_estdato, Model.Estado, "Seleccione", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.nmar_estdato, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>            
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-default btn-primary" onclick="Guardar();" role="button"><i class="fa fa-save"></i>&nbsp;&nbsp;Guardar</a>
+                <a class="btn btn-default btn-success" onclick="Nuevo();" role="button"><i class="fa fa-clone"></i>&nbsp;&nbsp;Nuevo</a>
+                <a class="btn btn-default btn-default" onclick="Cancelar();" role="button"><i class="fa fa-reply"></i>&nbsp;&nbsp;Retornar</a>
+            </div>
+        </div>
+    </div>
+}
+@section scripts {
+    <script>
+        $(function () {
+            Globalize.culture('es-PE');
+            //$("#fechaIngreso").datepicker.setDefaults($.datepicker.regional['es']);
+            $("#dper_fecingreso").datepicker();
+            //$('#fechaIngreso').datepicker('option', { dateFormat: 'dd/mm/yy' });
+        });
+        function Guardar() {
+            if ($("#frmTMarca").valid()) {
+                $.ajax({
+                    url: '@Url.Action("GuardarJSON", "TMarca")',
+                    type: 'POST',
+                    data: $("#frmTMarca").serialize(),
+                    success: function (result) {
+                        data = result;
+                        new PNotify({
+                            title: data.Title,
+                            text: data.Message,
+                            type: data.TypeMessage
+                        });
+                        if (result.Succeeded) {
+                            //$('#dlgDerivacionDocumento').modal('hide');
+                            $('#nmar_codigo').val(data.Data);
+                        }
+                    }
+                });
+            }
+        };
+        function Nuevo() {
+            var url = '@Url.Action("TMarca", "TMarca", new { area = "Administracion" })';
+            document.location.href = url + "?codigo=0";
+        };
+        function Cancelar() {
+            var url = '@Url.Action("Index", "TMarca", new { area = "Administracion" })';
+            document.location.href = url;
+        };
+    </script>
+}

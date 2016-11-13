@@ -1,0 +1,148 @@
+﻿@model InnovaTec.SisPol.Web1.Areas.Administracion.Models.TPersonalViewModels
+@{
+    ViewBag.Title = "- Personal";
+}
+<h2>Personal</h2>
+@using (Html.BeginForm("", "", new { Area = "Administracion"},
+                       FormMethod.Post, new { id = "frmTPersonal", role = "form"}))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.nper_codigo,new {@class = "form-control" })
+    <hr />
+    <div class="alert alert-warning">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+    </div>    
+    <div class="panel panel-info">
+        <div class="panel-heading">Personal</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cper_nrodni)
+                        @Html.TextBoxFor(m => m.cper_nrodni, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cper_nrodni, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cper_nombres)
+                        @Html.TextBoxFor(m => m.cper_nombres, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cper_nombres, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cper_apepat)
+                        @Html.TextBoxFor(m => m.cper_apepat, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cper_apepat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cper_apemat)
+                        @Html.TextBoxFor(m => m.cper_apemat, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cper_apemat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cper_telefono)
+                        @Html.TextBoxFor(m => m.cper_telefono, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cper_telefono, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cper_celular)
+                        @Html.TextBoxFor(m => m.cper_celular, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cper_celular, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cper_email)
+                        @Html.TextBoxFor(m => m.cper_email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cper_email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.cper_sexo)                        
+                        @Html.DropDownListFor(m => m.cper_sexo, Model.Sexo, "Seleccione", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.cper_sexo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">                    
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.dper_fecingreso)
+                        <div id="dper_fecingreso" class="input-group date">
+                            @Html.TextBoxFor(m => m.dper_fecingreso, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                            <span class="input-group-addon"><i class="fa fa-calendar bigger-110"></i></span>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.dper_fecingreso, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.nper_estdato)
+                        @Html.DropDownListFor(m => m.nper_estdato, Model.Estado, "Seleccione", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.nper_estdato, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-default btn-primary" onclick="Guardar();" role="button"><i class="fa fa-save"></i>&nbsp;&nbsp;Guardar</a>
+                <a class="btn btn-default btn-success" onclick="Nuevo();" role="button"><i class="fa fa-clone"></i>&nbsp;&nbsp;Nuevo</a>
+                <a class="btn btn-default btn-default" onclick="Cancelar();" role="button"><i class="fa fa-reply"></i>&nbsp;&nbsp;Retornar</a>
+            </div>
+        </div>
+    </div>
+}
+@section scripts {
+    <script>       
+        $(function () {
+            Globalize.culture('es-PE');
+            //$("#fechaIngreso").datepicker.setDefaults($.datepicker.regional['es']);
+            $("#dper_fecingreso").datepicker();
+            //$('#fechaIngreso').datepicker('option', { dateFormat: 'dd/mm/yy' });
+        });
+
+        function Guardar() {            
+            if ($("#frmTPersonal").valid()) {                
+                $.ajax({
+                    url: '@Url.Action("GuardarJSON", "TPersonal")',
+                    type: 'POST',
+                    data: $("#frmTPersonal").serialize(),
+                    success: function (result) {
+                        data = result;
+                        new PNotify({
+                            title: data.Title,
+                            text: data.Message,
+                            type: data.TypeMessage
+                        });
+                        if (result.Succeeded) {
+                            //$('#dlgDerivacionDocumento').modal('hide');
+                            $('#nper_codigo').val(data.Data);
+                        }
+                    }
+                });
+            }
+        };
+        function Nuevo() {
+            var url = '@Url.Action("TPersonal", "TPersonal", new { area = "Administracion" })';
+            document.location.href = url + "?codigo=0";
+        };
+        function Cancelar() {
+            var url = '@Url.Action("Index", "TPersonal", new { area = "Administracion" })';
+            document.location.href = url;
+        };
+    </script>
+}

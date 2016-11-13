@@ -1,0 +1,77 @@
+﻿@model InnovaTec.SisPol.Web1.Models.MotorizadoPtoVentaViewModels
+@{
+    ViewBag.Title = "Motorizado Punto de Venta";
+}
+<h2>Motorizado Punto de Venta</h2>
+@using (Html.BeginForm("frmMotorizadoPtoVenta", "MotorizadoPtoVenta", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()    
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Puntos de Venta</div>
+        <div class="panel-body">
+            <div class="form-group">                
+                    @Html.LabelFor(m => m.NMOT_CODIGO, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.SelectedMotorizado, Model.Motorizado, new { @class = "form-control" })
+                    </div>
+                    @Html.LabelFor(m => m.CUBI_CODIGO, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.SelectedDistrito, Model.Distrito, new { @class = "form-control" })
+                    </div>                
+            </div>
+        </div>
+    </div>    
+    
+    <div class="panel panel-info">        
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="table-responsive">
+                    <table id="tablaPtosVenta" class="table table-condensed table-striped table-hover"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@*Load DataTables css*@
+@*<link href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" />*@
+@*Load DataTables js*@
+
+@section Scripts{
+    @*<script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>*@
+    <script>
+        var url = '@Url.Action("MostrarPtosVenta", "MotorizadoPtoVenta", new { area = "" })';
+        $(document).ready(function () {
+            //alert(url);
+            $('#tablaPtosVenta').dataTable({
+                "ajax": {
+                    "url": url,
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "aoColumns": [
+                     { "sName": "colu01", "sTitle": "Punto de Venta"},
+                     { "sName": "colu02", "sTitle": "Teléfono"},
+                     { "sName": "colu03", "sTitle": "Contacto"},                     
+                     {
+                         "sName": "colu04",
+                         "sTitle": "Seleccionar",
+                         "render": function (data,type,row) {
+                             //var chk = "";
+                             //alert(row[3]);
+                             if (row[3] == "1")
+                             {
+                                 return "<input type=\"checkbox\" value=\"1\"/>";
+                             }
+                             return "<input type=\"checkbox\" value=\"0\"/>";                             
+                             
+                         }
+                     }
+                ]
+            });
+        });
+    </script>
+}

@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Ingreso de Polizas";
+}
+<h2>Ingreso de Polizas</h2>
+@using (Html.BeginForm("", "", new { Area = "Poliza", ReturnUrl = ViewBag.ReturnUrl },
+                                                      FormMethod.Post, new { id = "frmPolizas", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-10">
+                &nbsp;
+            </div>
+            <div class="col-md-12">
+                <button type="button" id="btnIngresarPolizas" class="btn btn-primary" onclick="IngresarPolizas();"><i class="fa fa-clone"></i> Ingresar Polizas</button>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            &nbsp;
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="table-responsive">
+                    <table id="tablaPolizas" class="table table-condensed table-striped table-hover"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts {
+    <script>
+        $(function () {
+            Globalize.culture('es-PE');
+            if ('@ViewBag.flag' == "1") {
+                new PNotify({
+                    title: "Exito",
+                    text: "La generación de pólizas tuvo éxito",
+                    type: "success"
+                });
+            }            
+        });
+
+        var url = '@Url.Action("MostrarPolizas", "IngresarPolizas", new { area = "Poliza" })';
+        $(document).ready(function () {
+            $('#tablaPolizas').dataTable({
+                "ajax": {
+                    "url": url,
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "aoColumns": [
+                      {
+                          "sName": "colu01",
+                          "sWidth": "5%",
+                          "sClass": "center",
+                          "bSearchable": false,
+                          "bSortable": false,
+                          "render": function (data, type, row) {
+                              return "<div class=\"action-buttons\"><a href=\"javascript:;\" onclick=\"Editar('" + row[0] + "');\"><i class=\"fa fa-pencil green bigger-130\"></i></a></div>";
+                          }
+                      },
+                     { "sName": "colu02", "sTitle": "Nº Poliza" },
+                     { "sName": "colu03", "sTitle": "Nº Formulario" },
+                     { "sName": "colu04", "sTitle": "Categoría" },
+                     { "sName": "colu05", "sTitle": "Estado Poliza" },
+                     { "sName": "colu06", "sTitle": "Estado Registro" },
+                      {
+                          "sName": "colu07",
+                          "sWidth": "5%",
+                          "sClass": "center",
+                          "bSearchable": false,
+                          "bSortable": false,
+                          "render": function (data, type, row) {
+                              return "<div class=\"action-buttons\"><a href=\"javascript:;\" onclick=\"Eliminar('" + row[0] + "');\"><i class=\"fa fa-trash green bigger-130\"></i></a></div>";
+                          }
+                      }
+                ]
+            });
+        });
+
+        function IngresarPolizas() {
+            var url = '@Url.Action("IngresarPolizas", "IngresarPolizas", new { area = "Poliza" })';
+            document.location.href = url;
+        };
+
+        @*function Editar(codigo) {
+            var url = '@Url.Action("TPolizaFor", "TPolizaFor", new { area = "Administracion" })';
+            document.location.href = url + "?codigo=" + codigo;
+        };
+
+        function Nuevo() {
+            var url = '@Url.Action("TPolizaFor", "TPolizaFor", new { area = "Administracion" })';
+            document.location.href = url + "?codigo=0";
+        };
+
+        function Eliminar(codigo) {
+            bootbox.confirm("¿Deseas eliminar el registro?", function (result) {
+                if (result == true) {
+                    var url = '@Url.Action("DarDeBaja", "TPolizaFor", new { area = "Administracion" })';
+                    document.location.href = url + "?codigo=" + codigo;
+                }
+            });
+        };*@
+    </script>
+}
+
