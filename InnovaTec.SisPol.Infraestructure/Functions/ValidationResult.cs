@@ -1,5 +1,6 @@
-﻿
-namespace InnovaTec.SisPol.Infraestructure
+﻿using InnovaTec.SisPol.Infraestructure.Constants;
+
+namespace InnovaTec.SisPol.Infraestructure.Functions
 {
     public class ValidationResult
     {

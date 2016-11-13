@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InnovaTec.SisPol.Infraestructure
+namespace InnovaTec.SisPol.Infraestructure.Constants
 {
     public class Validacion
     {

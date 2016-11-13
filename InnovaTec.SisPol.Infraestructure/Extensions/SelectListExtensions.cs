@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using InnovaTec.SisPol.Infraestructure;
 using InnovaTec.SisPol.Model;
 
-namespace InnovaTec.SisPol.Infraestructure
+namespace InnovaTec.SisPol.Infraestructure.Extensions
 {
     public static class SelectListExtensions
     {

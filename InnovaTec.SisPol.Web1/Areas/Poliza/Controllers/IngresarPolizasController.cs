@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Web;
 using System.Linq;
 using System.Web.Mvc;
-using System.Collections.Generic;
 using InnovaTec.SisPol.Web1.Areas.Poliza.Models;
 using InnovaTec.SisPol.Model;
-using InnovaTec.SisPol.Infraestructure;
-using InnovaTec.SisPol.Web1.Controllers;
+using InnovaTec.SisPol.Infraestructure.Constants;
+using InnovaTec.SisPol.Infraestructure.Extensions;
+using InnovaTec.SisPol.Infraestructure.Functions;
 
 namespace InnovaTec.SisPol.Web1.Areas.Poliza.Controllers
 {

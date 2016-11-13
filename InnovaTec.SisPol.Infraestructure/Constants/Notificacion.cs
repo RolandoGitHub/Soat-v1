@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace InnovaTec.SisPol.Infraestructure
+namespace InnovaTec.SisPol.Infraestructure.Constants
 {
     public static class Notificacion
     {

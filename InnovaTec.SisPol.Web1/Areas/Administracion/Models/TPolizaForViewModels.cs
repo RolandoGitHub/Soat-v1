@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
-using InnovaTec.SisPol.Infraestructure;
+using InnovaTec.SisPol.Infraestructure.Constants;
 
 
 namespace InnovaTec.SisPol.Web1.Areas.Administracion.Models

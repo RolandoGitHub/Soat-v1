@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using InnovaTec.SisPol.Infraestructure;
+using InnovaTec.SisPol.Infraestructure.Constants;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System;

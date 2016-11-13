@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using InnovaTec.SisPol.Infraestructure.Constants;
 
 namespace InnovaTec.SisPol.Web1.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        [Required(ErrorMessage =Validacion.CampoRequerido)]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
     }
@@ -25,10 +26,10 @@ namespace InnovaTec.SisPol.Web1.Models
 
     public class VerifyCodeViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Validacion.CampoRequerido)]
         public string Provider { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = Validacion.CampoRequerido)]
         [Display(Name = "Código")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
@@ -41,19 +42,19 @@ namespace InnovaTec.SisPol.Web1.Models
 
     public class ForgotViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Validacion.CampoRequerido)]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Validacion.CampoRequerido)]
         [Display(Name = "Correo electrónico")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = Validacion.CampoRequerido)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
@@ -64,12 +65,12 @@ namespace InnovaTec.SisPol.Web1.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Validacion.CampoRequerido)]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = Validacion.CampoRequerido)]
         [StringLength(100, ErrorMessage = "Al {0} menós debe tener {2} carácteres longitud.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
@@ -83,12 +84,12 @@ namespace InnovaTec.SisPol.Web1.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Validacion.CampoRequerido)]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = Validacion.CampoRequerido)]
         [StringLength(100, ErrorMessage = "Al {0} menós debe tener {2} carácteres longitud.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
@@ -104,7 +105,7 @@ namespace InnovaTec.SisPol.Web1.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = Validacion.CampoRequerido)]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }

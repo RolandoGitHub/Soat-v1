@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity.Core.Objects;
 using InnovaTec.SisPol.Web1.Areas.Administracion.Models;
 using InnovaTec.SisPol.Model;
-using InnovaTec.SisPol.Infraestructure;
+using InnovaTec.SisPol.Infraestructure.Constants;
+using InnovaTec.SisPol.Infraestructure.Enums;
+using InnovaTec.SisPol.Infraestructure.Extensions;
+using InnovaTec.SisPol.Infraestructure.Functions;
 
 namespace InnovaTec.SisPol.Web1.Areas.Administracion.Controllers
 {
