@@ -16,6 +16,7 @@
         <EntityTypeShape EntityType="Model1.TPolizaFor" Width="1.5" PointX="2.5" PointY="0.5" />
         <EntityTypeShape EntityType="Model1.TMotorizado" Width="1.5" PointX="10.25" PointY="0.5" />
         <EntityTypeShape EntityType="Model1.TPersonal" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.TUsuario" Width="1.5" PointX="0.75" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

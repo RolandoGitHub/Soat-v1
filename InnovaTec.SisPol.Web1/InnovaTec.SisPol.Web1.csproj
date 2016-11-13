@@ -228,6 +228,7 @@
     <Compile Include="Models\MotorizadoPolizaViewModels.cs" />
     <Compile Include="Models\MotorizadoPtoVentaViewModels.cs" />
     <Compile Include="Models\PuntoVentaPolizaViewModels.cs" />
+    <Compile Include="Models\TUsuarioViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterDataTablesModelBinder.cs" />
     <Compile Include="Startup.cs" />

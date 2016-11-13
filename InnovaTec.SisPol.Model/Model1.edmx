@@ -198,6 +198,24 @@
           <Property Name="caud_usract" Type="varchar" MaxLength="8" />
           <Property Name="daud_fecact" Type="datetime" />
         </EntityType>
+        <EntityType Name="TUsuario">
+          <Key>
+            <PropertyRef Name="nusr_codigo" />
+          </Key>
+          <Property Name="nusr_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cusr_dni" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cusr_nombres" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cusr_apepat" Type="varchar" MaxLength="30" />
+          <Property Name="cusr_apemat" Type="varchar" MaxLength="30" />
+          <Property Name="cusr_email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cusr_clave" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="nusr_estdato" Type="int" Nullable="false" />
+          <Property Name="nusr_estdreg" Type="int" Nullable="false" />
+          <Property Name="caud_usrcre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="caud_usract" Type="varchar" MaxLength="20" />
+          <Property Name="daud_feccre" Type="datetime" Nullable="false" />
+          <Property Name="daud_fecact" Type="datetime" />
+        </EntityType>
         <Association Name="FK_TParamDetalle_TParametrica">
           <End Role="TParametrica" Type="Self.TParametrica" Multiplicity="1" />
           <End Role="TParamDetalle" Type="Self.TParamDetalle" Multiplicity="*" />
@@ -264,6 +282,7 @@
           <EntitySet Name="TPersonal" EntityType="Self.TPersonal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TPolizaFor" EntityType="Self.TPolizaFor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TPuntoVenta" EntityType="Self.TPuntoVenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUsuario" EntityType="Self.TUsuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TParamDetalle_TParametrica" Association="Self.FK_TParamDetalle_TParametrica">
             <End Role="TParametrica" EntitySet="TParametrica" />
             <End Role="TParamDetalle" EntitySet="TParamDetalle" />
@@ -331,6 +350,7 @@
             <Parameter Name="nsup_codigo" Mode="InOut" Type="Int32" />
             <Parameter Name="nper_codigo" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="TUsuario" EntityType="Model1.TUsuario" />
         </EntityContainer>
         <EntityType Name="TParametrica">
           <Key>
@@ -537,6 +557,24 @@
           <Property Name="caud_usrcre" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="daud_feccre" Type="DateTime" Precision="3" />
           <Property Name="caud_usract" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="daud_fecact" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TUsuario">
+          <Key>
+            <PropertyRef Name="nusr_codigo" />
+          </Key>
+          <Property Name="nusr_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cusr_dni" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="cusr_nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cusr_apepat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cusr_apemat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cusr_email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cusr_clave" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nusr_estdato" Type="Int32" Nullable="false" />
+          <Property Name="nusr_estdreg" Type="Int32" Nullable="false" />
+          <Property Name="caud_usrcre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="caud_usract" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="daud_feccre" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="daud_fecact" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
@@ -753,6 +791,25 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SISPOL_GUARDAR_MOTORIZADO" FunctionName="Model1.Store.SISPOL_GUARDAR_MOTORIZADO" />
           <FunctionImportMapping FunctionImportName="SISPOL_GUARDAR_SUPERVISOR" FunctionName="Model1.Store.SISPOL_GUARDAR_SUPERVISOR" />
+          <EntitySetMapping Name="TUsuario">
+            <EntityTypeMapping TypeName="Model1.TUsuario">
+              <MappingFragment StoreEntitySet="TUsuario">
+                <ScalarProperty Name="daud_fecact" ColumnName="daud_fecact" />
+                <ScalarProperty Name="daud_feccre" ColumnName="daud_feccre" />
+                <ScalarProperty Name="caud_usract" ColumnName="caud_usract" />
+                <ScalarProperty Name="caud_usrcre" ColumnName="caud_usrcre" />
+                <ScalarProperty Name="nusr_estdreg" ColumnName="nusr_estdreg" />
+                <ScalarProperty Name="nusr_estdato" ColumnName="nusr_estdato" />
+                <ScalarProperty Name="cusr_clave" ColumnName="cusr_clave" />
+                <ScalarProperty Name="cusr_email" ColumnName="cusr_email" />
+                <ScalarProperty Name="cusr_apemat" ColumnName="cusr_apemat" />
+                <ScalarProperty Name="cusr_apepat" ColumnName="cusr_apepat" />
+                <ScalarProperty Name="cusr_nombres" ColumnName="cusr_nombres" />
+                <ScalarProperty Name="cusr_dni" ColumnName="cusr_dni" />
+                <ScalarProperty Name="nusr_codigo" ColumnName="nusr_codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -37,6 +37,7 @@ namespace InnovaTec.SisPol.Model
         public virtual DbSet<TPolizaFor> TPolizaFor { get; set; }
         public virtual DbSet<TMotorizado> TMotorizado { get; set; }
         public virtual DbSet<TPersonal> TPersonal { get; set; }
+        public virtual DbSet<TUsuario> TUsuario { get; set; }
     
         public virtual int SISPOL_GENERAR_POLIZA(string p_ccat_codigo, string p_ccat_descripcion, Nullable<int> p_nest_codigo, string p_cest_descripcion, Nullable<int> p_nform_desde, Nullable<int> p_nform_hasta, string p_cpol_formato, Nullable<int> p_npol_desde, Nullable<int> p_npol_hasta, Nullable<System.DateTime> p_d_fecingreso, Nullable<int> p_n_cantidadPolizas, Nullable<int> p_n_diasVigencia, string p_usuariocrea)
         {
